@@ -9,7 +9,7 @@ Thank you for your interest in contributing to the **3D Bricks Slider Game**! We
 
 2. **Clone Your Fork** 
 `git clone https://github.com/mmabiaa/3d-bricks-slider-game.git`
-text
+
 
 3. **Create a New Branch** 🌿
 `git checkout -b feature/YourFeatureName`
