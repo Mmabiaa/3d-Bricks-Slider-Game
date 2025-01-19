@@ -5,6 +5,7 @@ Welcome to the **3D Bricks Slider Game**! 🧩 This is an engaging and interacti
 ## 📚 Table of Contents
 
 - [Features](#features)
+- [Live Demo](#live-demo)
 - [Getting Started](#getting-started)
   - [Prerequisites](#prerequisites)
   - [Installation](#installation)
@@ -20,6 +21,11 @@ Welcome to the **3D Bricks Slider Game**! 🧩 This is an engaging and interacti
 - **Challenging Levels:** Progress through various levels with increasing difficulty. ⏳
 - **User-Friendly Controls:** Easy to learn, hard to master. 🎮
 - **Sound Effects & Music:** Enjoy an engaging audio experience while playing. 🎶
+
+## 🚀 Live Demo
+
+Check out the live demo of the game here: [Play the Game!](https://bricks-game-mmabiaa.vercel.app) 🎉
+
 
 ## 🚀 Getting Started
 
