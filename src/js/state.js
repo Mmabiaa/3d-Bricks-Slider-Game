@@ -16,6 +16,7 @@ const GAME_MODE_CASUAL = Symbol('GAME_MODE_CASUAL');
 const MENU_MAIN = Symbol('MENU_MAIN');
 const MENU_PAUSE = Symbol('MENU_PAUSE');
 const MENU_SCORE = Symbol('MENU_SCORE');
+const MENU_HOW_IT_WORKS = Symbol('MENU_HOW_IT_WORKS');
 
 
 

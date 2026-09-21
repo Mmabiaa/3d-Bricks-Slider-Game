@@ -9,6 +9,7 @@ const menuContainerNode = $('.menus');
 const menuMainNode = $('.menu--main');
 const menuPauseNode = $('.menu--pause');
 const menuScoreNode = $('.menu--score');
+const menuHowItWorksNode = $('.menu--how-it-works');
 
 const finalScoreLblNode = $('.final-score-lbl');
 const highScoreLblNode = $('.high-score-lbl');
@@ -27,6 +28,7 @@ function renderMenus() {
 	hideMenu(menuMainNode);
 	hideMenu(menuPauseNode);
 	hideMenu(menuScoreNode);
+	hideMenu(menuHowItWorksNode);
 
 	switch (state.menus.active) {
 		case MENU_MAIN:
@@ -43,6 +45,9 @@ function renderMenus() {
 				highScoreLblNode.textContent = `High Score: ${formatNumber(getHighScore())}`;
 			}
 			showMenu(menuScoreNode);
+			break;
+		case MENU_HOW_IT_WORKS:
+			showMenu(menuHowItWorksNode);
 			break;
 	}
 
@@ -70,6 +75,16 @@ handleClick($('.play-casual-btn'), () => {
 	setActiveMenu(null);
 	resetGame();
 });
+
+handleClick($('.how-it-works-btn'), () => setActiveMenu(MENU_HOW_IT_WORKS));
+
+// How It Works Menu
+handleClick($('.play-normal-btn-from-how'), () => {
+	setGameMode(GAME_MODE_RANKED);
+	setActiveMenu(null);
+	resetGame();
+});
+handleClick($('.menu-btn--how-it-works'), () => setActiveMenu(MENU_MAIN));
 
 // Pause Menu
 handleClick($('.resume-btn'), () => resumeGame());
