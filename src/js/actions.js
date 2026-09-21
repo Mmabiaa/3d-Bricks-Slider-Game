@@ -18,6 +18,29 @@ function setActiveMenu(menu) {
 // HUD ACTIONS //
 /////////////////
 
+const backgrounds = [
+	'#65c8a8', // default 0-499
+	'#1a365d', // 500-999 (Blue Night)
+	'#170b3b', // 1000-1499 (Cosmic Space Purple)
+	'#8a2c22', // 1500-1999 (Sunset Red/Orange)
+	'#0f381e', // 2000-2499 (Digital Green)
+	'#4a154b'  // 2500+ (Deep Violet)
+];
+
+function checkMilestone(score) {
+	let milestone = Math.floor(score / 500);
+	if (milestone > state.game.lastMilestone && milestone > 0) {
+		state.game.lastMilestone = milestone;
+
+		let bgIndex = Math.min(milestone, backgrounds.length - 1);
+		document.body.style.backgroundColor = backgrounds[bgIndex];
+
+		if (typeof showMilestoneNotification === 'function') {
+			showMilestoneNotification(`${milestone * 500} Points! New World Unlocked!`);
+		}
+	}
+}
+
 function setScore(score) {
 	state.game.score = score;
 	renderScoreHud();
@@ -30,6 +53,9 @@ function incrementScore(inc) {
 			state.game.score = 0;
 		}
 		renderScoreHud();
+		if (!isCasualGame()) {
+			checkMilestone(state.game.score);
+		}
 	}
 }
 
@@ -57,6 +83,9 @@ function resetGame() {
 	setScore(0);
 	setCubeCount(0);
 	spawnTime = getSpawnDelay();
+
+	state.game.lastMilestone = 0;
+	document.body.style.backgroundColor = backgrounds[0];
 }
 
 function pauseGame() {

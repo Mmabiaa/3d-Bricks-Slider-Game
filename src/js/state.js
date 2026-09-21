@@ -32,7 +32,9 @@ const state = {
 		// Player score.
 		score: 0,
 		// Total number of cubes smashed in game.
-		cubeCount: 0
+		cubeCount: 0,
+		// Track background changing score milestone
+		lastMilestone: 0
 	},
 	menus: {
 		// Set to `null` to hide all menus

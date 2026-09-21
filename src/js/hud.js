@@ -54,3 +54,21 @@ function renderSlowmoStatus(percentRemaining) {
 	slowmoNode.style.opacity = percentRemaining === 0 ? 0 : 1;
 	slowmoBarNode.style.transform = `scaleX(${percentRemaining.toFixed(3)})`;
 }
+
+//////////////////////////
+// Milestone Notifications
+//////////////////////////
+
+const notifNode = document.createElement('div');
+notifNode.className = 'milestone-notify';
+document.body.appendChild(notifNode);
+
+let notifTimeout;
+function showMilestoneNotification(text) {
+	notifNode.innerText = text;
+	notifNode.classList.add('show');
+	clearTimeout(notifTimeout);
+	notifTimeout = setTimeout(() => {
+		notifNode.classList.remove('show');
+	}, 3000);
+}
