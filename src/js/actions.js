@@ -262,8 +262,9 @@ function tick(width, height, simTime, simSpeed, lag) {
 		// Remove if offscreen
 		if (target.y > centerY + targetHitRadius * 2) {
 			targets.splice(i, 1);
+			const isBomb = target.isBomb;
 			returnTarget(target);
-			if (isInGame() && !target.isBomb) {
+			if (isInGame() && !isBomb) {
 				if (isCasualGame()) {
 					incrementScore(-25);
 				} else {
