@@ -17,6 +17,7 @@ All notable changes to the 3D Bricks Slider Game project will be documented in t
   - Created a dedicated instruction menu overlay, accessible directly from the Main Menu.
   - Documented the game's objective, premise, and interaction controls for new players.
   - Integrated a prominently visible "Bomb Warning" instructing players to avoid swiping bombs.
+  - Included a section detailing the new Dynamic Backgrounds and progression incentives.
   - Added a "Start Playing" button and intuitive navigation back to the main menu without breaking game flow.
 
 - **Dynamic Backgrounds Feature** (from `feature/DYNAMIC-BACKGROUND.md`):
@@ -24,3 +25,6 @@ All notable changes to the 3D Bricks Slider Game project will be documented in t
   - Crafted distinct, high-contrast color themes (Teal, Blue Night, Cosmic Space Purple, Sunset Red, Digital Green, and Deep Violet) fitting the suggested game environments without hindering readability or clashing with gameplay objects.
   - Added an unobtrusive milestone notification popup (e.g., "500 Points! New World Unlocked!") accompanied by smooth color transitions.
   - Handled progress tracking within ranked mode sessions and ensured the background resets gracefully upon game restarts.
+
+### Fixed
+- **Bomb Mechanic**: Resolved an issue where ignoring a bomb and letting it fall offscreen incorrectly resulted in a Game Over sequence. Ignoring bombs now correctly allows gameplay to proceed unaffected.
