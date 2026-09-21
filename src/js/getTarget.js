@@ -21,6 +21,12 @@ const getTarget = (() => {
 		maxSpawns: 1
 	});
 
+	const bombSpawner = makeSpawner({
+		chance: 0.15,
+		cooldownPerSpawn: 4000,
+		maxSpawns: 1
+	});
+
 	let doubleStrong = false;
 	const strongSpawner = makeSpawner({
 		chance: 0.3,
@@ -83,11 +89,16 @@ const getTarget = (() => {
 		let wireframe = false;
 		let health = 1;
 		let maxHealth = 3;
+		let isBomb = false;
 		const spinner = state.game.cubeCount >= spinnerThreshold && isInGame() && spinnerSpawner.shouldSpawn();
 
 		// Target Parameter Overrides
 		// --------------------------------
-		if (state.game.cubeCount >= slowmoThreshold && slowmoSpawner.shouldSpawn()) {
+		if (state.game.cubeCount >= bombThreshold && bombSpawner.shouldSpawn()) {
+			color = BOMB_COLOR;
+			isBomb = true;
+		}
+		else if (state.game.cubeCount >= slowmoThreshold && slowmoSpawner.shouldSpawn()) {
 			color = BLUE;
 			wireframe = true;
 		}
@@ -99,6 +110,7 @@ const getTarget = (() => {
 		// Target Creation
 		// --------------------------------
 		const target = getTargetOfStyle(color, wireframe);
+		target.isBomb = isBomb;
 		target.hit = false;
 		target.maxHealth = maxHealth;
 		target.health = health;

@@ -332,3 +332,30 @@ const projectVertexTo = (v, target) => {
 	target.x = v.x * depth;
 	target.y = v.y * depth;
 };
+
+///////////////////
+// Audio Helpers //
+///////////////////
+
+const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+
+function playExplosionSound() {
+	if (audioCtx.state === 'suspended') audioCtx.resume();
+	const bufferSize = audioCtx.sampleRate * 2; // 2 seconds
+	const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);
+	const data = buffer.getChannelData(0);
+	for (let i = 0; i < bufferSize; i++) {
+		data[i] = (Math.random() * 2 - 1) * Math.exp(-i / (audioCtx.sampleRate * 0.15)); // fast decay
+	}
+	const noiseSource = audioCtx.createBufferSource();
+	noiseSource.buffer = buffer;
+
+	// lowpass filter
+	const filter = audioCtx.createBiquadFilter();
+	filter.type = 'lowpass';
+	filter.frequency.value = 800; // muffled boom sound
+
+	noiseSource.connect(filter);
+	filter.connect(audioCtx.destination);
+	noiseSource.start();
+}

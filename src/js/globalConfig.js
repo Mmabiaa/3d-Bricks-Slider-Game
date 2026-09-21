@@ -12,7 +12,8 @@ const BLUE = { r: 0x67, g: 0xd7, b: 0xf0 };
 const GREEN = { r: 0xa6, g: 0xe0, b: 0x2c };
 const PINK = { r: 0xfa, g: 0x24, b: 0x73 };
 const ORANGE = { r: 0xfe, g: 0x95, b: 0x22 };
-const allColors = [BLUE, GREEN, PINK, ORANGE];
+const BOMB_COLOR = { r: 0x22, g: 0x22, b: 0x22 };
+const allColors = [BLUE, GREEN, PINK, ORANGE, BOMB_COLOR];
 
 // Gameplay
 const getSpawnDelay = () => {
@@ -26,6 +27,7 @@ const doubleStrongEnableScore = 2000;
 const slowmoThreshold = 10;
 const strongThreshold = 25;
 const spinnerThreshold = 25;
+const bombThreshold = 5;
 
 // Interaction state
 let pointerIsDown = false;

@@ -221,6 +221,15 @@ function tick(width, height, simTime, simSpeed, lag) {
 		target.transform();
 		target.project();
 
+		if (target.isBomb && Math.random() < 0.3) {
+			addSpark(
+				target.projected.x + random(-15, 15),
+				target.projected.y + random(-15, 15),
+				random(-4, 4),
+				random(-4, 4)
+			);
+		}
+
 		// Remove if offscreen
 		if (target.y > centerY + targetHitRadius * 2) {
 			targets.splice(i, 1);
@@ -254,6 +263,16 @@ function tick(width, height, simTime, simSpeed, lag) {
 				// Hit! (though we don't want to allow hits on multiple sequential frames)
 				if (!target.hit) {
 					target.hit = true;
+
+					if (target.isBomb) {
+						playExplosionSound();
+						createBurst(target, forceMultiplier * 3);
+						sparkBurst(hitX, hitY, 40, 20); // Big explosion
+						targets.splice(i, 1);
+						returnTarget(target);
+						endGame();
+						continue targetLoop;
+					}
 
 					target.xD += pointerDeltaScaled.x * hitDampening;
 					target.yD += pointerDeltaScaled.y * hitDampening;

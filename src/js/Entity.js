@@ -61,6 +61,7 @@ class Entity {
 
 		this.projected.x = 0;
 		this.projected.y = 0;
+		this.isBomb = false;
 	}
 
 	transform() {
