@@ -340,6 +340,7 @@ const projectVertexTo = (v, target) => {
 const audioCtx = new (window.AudioContext || window.webkitAudioContext)();
 
 function playExplosionSound() {
+	if (typeof audioState !== 'undefined' && !audioState.enabled) return;
 	if (audioCtx.state === 'suspended') audioCtx.resume();
 	const bufferSize = audioCtx.sampleRate * 2; // 2 seconds
 	const buffer = audioCtx.createBuffer(1, bufferSize, audioCtx.sampleRate);

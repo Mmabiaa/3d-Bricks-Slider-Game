@@ -65,12 +65,14 @@ renderMenus();
 
 // Main Menu
 handleClick($('.play-normal-btn'), () => {
+	if (typeof playSound !== 'undefined') playSound('start');
 	setGameMode(GAME_MODE_RANKED);
 	setActiveMenu(null);
 	resetGame();
 });
 
 handleClick($('.play-casual-btn'), () => {
+	if (typeof playSound !== 'undefined') playSound('start');
 	setGameMode(GAME_MODE_CASUAL);
 	setActiveMenu(null);
 	resetGame();
@@ -80,6 +82,7 @@ handleClick($('.how-it-works-btn'), () => setActiveMenu(MENU_HOW_IT_WORKS));
 
 // How It Works Menu
 handleClick($('.play-normal-btn-from-how'), () => {
+	if (typeof playSound !== 'undefined') playSound('start');
 	setGameMode(GAME_MODE_RANKED);
 	setActiveMenu(null);
 	resetGame();
@@ -92,6 +95,7 @@ handleClick($('.menu-btn--pause'), () => setActiveMenu(MENU_MAIN));
 
 // Score Menu
 handleClick($('.play-again-btn'), () => {
+	if (typeof playSound !== 'undefined') playSound('start');
 	setActiveMenu(null);
 	resetGame();
 });

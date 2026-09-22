@@ -35,6 +35,8 @@ function checkMilestone(score) {
 		let bgIndex = Math.min(milestone, backgrounds.length - 1);
 		document.body.style.backgroundColor = backgrounds[bgIndex];
 
+		if (typeof playSound !== 'undefined') playSound('bgChange');
+
 		if (typeof showMilestoneNotification === 'function') {
 			showMilestoneNotification(`${milestone * 500} Points! New World Unlocked!`);
 		}
@@ -101,6 +103,7 @@ function endGame() {
 	if (isNewHighScore()) {
 		setHighScore(state.game.score);
 	}
+	if (typeof playSound !== 'undefined') playSound('gameOver');
 	setActiveMenu(MENU_SCORE);
 }
 
@@ -316,6 +319,7 @@ function tick(width, height, simTime, simSpeed, lag) {
 						incrementScore(10);
 
 						if (target.health <= 0) {
+							if (typeof playSound !== 'undefined') playSound('splash');
 							incrementCubeCount(1);
 							createBurst(target, forceMultiplier);
 							sparkBurst(hitX, hitY, 8, sparkSpeed);
