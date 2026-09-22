@@ -283,3 +283,210 @@ a {
 	opacity: 1;
 	transform: translate(-50%, -40%);
 }
+
+
+/* ============================================================
+   HOW IT WORKS PAGE
+   ============================================================ */
+
+.hiw-title {
+	font-size: clamp(1.8rem, 6vw, 3.5rem);
+	margin: 0 0 0.5em;
+	line-height: 1.1;
+}
+
+.hiw-content {
+	width: 90%;
+	max-width: 580px;
+	max-height: 65vh;
+	overflow-y: auto;
+	background: rgba(0, 0, 0, 0.78);
+	border: 1px solid rgba(255, 255, 255, 0.12);
+	border-radius: 14px;
+	padding: 18px 20px;
+	box-shadow: 0 8px 32px rgba(0, 0, 0, 0.6);
+	text-align: left;
+	color: #fff;
+	scrollbar-width: thin;
+	scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.hiw-content::-webkit-scrollbar {
+	width: 4px;
+}
+
+.hiw-content::-webkit-scrollbar-thumb {
+	background: rgba(255, 255, 255, 0.2);
+	border-radius: 4px;
+}
+
+.hiw-section {
+	margin-bottom: 18px;
+}
+
+.hiw-section:last-child {
+	margin-bottom: 0;
+}
+
+.hiw-heading {
+	font-size: clamp(0.85rem, 3vw, 1.1rem);
+	color: #65c8a8;
+	margin: 0 0 6px;
+	text-align: left;
+	font-weight: bold;
+	letter-spacing: 0.04em;
+	line-height: 1.3;
+}
+
+.hiw-heading--danger {
+	color: #ff6b6b;
+	text-shadow: 0 0 8px rgba(255, 107, 107, 0.4);
+}
+
+.hiw-text {
+	font-size: clamp(0.72rem, 2.5vw, 0.88rem);
+	line-height: 1.6;
+	margin: 0;
+	text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+	color: rgba(255, 255, 255, 0.88);
+}
+
+/* Controls table */
+.hiw-table-wrap {
+	overflow-x: auto;
+}
+
+.hiw-table {
+	width: 100%;
+	border-collapse: collapse;
+	font-size: clamp(0.65rem, 2.2vw, 0.82rem);
+	color: rgba(255, 255, 255, 0.88);
+}
+
+.hiw-table tr:nth-child(odd) {
+	background: rgba(255, 255, 255, 0.05);
+}
+
+.hiw-table td {
+	padding: 6px 8px;
+	vertical-align: middle;
+	line-height: 1.4;
+}
+
+.hiw-table td:first-child {
+	white-space: nowrap;
+	padding-right: 14px;
+	color: rgba(255, 255, 255, 0.7);
+}
+
+.hiw-table td:last-child {
+	font-weight: bold;
+}
+
+/* Game modes grid */
+.hiw-modes {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: 10px;
+	margin-top: 6px;
+}
+
+.hiw-mode {
+	background: rgba(255, 255, 255, 0.07);
+	border: 1px solid rgba(255, 255, 255, 0.1);
+	border-radius: 10px;
+	padding: 10px 12px;
+}
+
+.hiw-mode-title {
+	display: block;
+	font-size: clamp(0.8rem, 2.8vw, 1rem);
+	color: #65c8a8;
+	font-weight: bold;
+	margin-bottom: 4px;
+}
+
+.hiw-mode p {
+	margin: 0;
+	font-size: clamp(0.65rem, 2vw, 0.78rem);
+	line-height: 1.4;
+	color: rgba(255, 255, 255, 0.78);
+}
+
+/* Start button emphasis */
+.hiw-start-btn {
+	margin-top: 12px;
+	margin-bottom: 4px;
+	opacity: 1 !important;
+	color: #050908 !important;
+}
+
+
+/* ============================================================
+   MOBILE RESPONSIVE BREAKPOINTS
+   ============================================================ */
+
+/* Phones (portrait) — up to 480px */
+@media (max-width: 480px) {
+	h1 {
+		font-size: 2.4rem;
+		margin: 0 0.4em 0.6em;
+	}
+
+	button {
+		font-size: 1.1rem;
+		width: 170px;
+		padding: 10px 14px;
+	}
+
+	.sound-btn {
+		right: 2em;
+		font-size: calc(12px + 2vw + 1vh);
+	}
+
+	.hiw-content {
+		max-height: 58vh;
+		padding: 14px 14px;
+	}
+
+	.hiw-modes {
+		grid-template-columns: 1fr;
+	}
+
+	.milestone-notify {
+		font-size: 1.2rem;
+		padding: 10px 18px;
+	}
+
+	.final-score-lbl {
+		font-size: 3.5rem;
+	}
+}
+
+/* Small tablets / large phones (landscape or 481–768px) */
+@media (min-width: 481px) and (max-width: 768px) {
+	h1 {
+		font-size: 3rem;
+	}
+
+	.hiw-content {
+		max-height: 60vh;
+		max-width: 94%;
+	}
+
+	.milestone-notify {
+		font-size: 1.4rem;
+	}
+}
+
+/* Desktop hover styles (already existed, kept here for clarity) */
+@media (min-width: 1025px) {
+	button:hover {
+		opacity: 1;
+	}
+
+	button:hover::before {
+		transform: scale(1, 1);
+		opacity: 1;
+	}
+}
