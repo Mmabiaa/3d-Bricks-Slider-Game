@@ -47,6 +47,40 @@ body {
 	text-shadow: 0 0 8px rgba(255, 255, 255, 0.4);
 }
 
+.lives-lbl {
+	font-size: 0.46em;
+	margin-top: 0.25em;
+	letter-spacing: 0.05em;
+	transition: transform 0.15s ease, opacity 0.15s ease;
+	display: block;
+}
+
+@keyframes lives-hit-flash {
+	0% {
+		transform: scale(1);
+		opacity: 1;
+	}
+
+	25% {
+		transform: scale(1.35);
+		opacity: 0.4;
+	}
+
+	60% {
+		transform: scale(0.9);
+		opacity: 1;
+	}
+
+	100% {
+		transform: scale(1);
+		opacity: 1;
+	}
+}
+
+.lives-lbl.lives-hit {
+	animation: lives-hit-flash 0.6s ease forwards;
+}
+
 .pause-btn {
 	position: fixed;
 	top: 0;

@@ -112,7 +112,9 @@ function resetGame() {
 	spawnTime = getSpawnDelay();
 
 	state.game.lastMilestone = 0;
+	state.game.lives = 3;
 	document.body.style.backgroundColor = backgrounds[0];
+	if (typeof renderLivesHud === 'function') renderLivesHud();
 }
 
 function pauseGame() {
@@ -121,6 +123,20 @@ function pauseGame() {
 
 function resumeGame() {
 	isPaused() && setActiveMenu(null);
+}
+
+function loseLife() {
+	state.game.lives--;
+	if (typeof renderLivesHud === 'function') renderLivesHud();
+	if (state.game.lives <= 0) {
+		endGame();
+	} else {
+		// Flash the lives HUD to signal damage
+		if (typeof livesNode !== 'undefined') {
+			livesNode.classList.add('lives-hit');
+			setTimeout(() => livesNode.classList.remove('lives-hit'), 600);
+		}
+	}
 }
 
 function endGame() {
@@ -296,7 +312,7 @@ function tick(width, height, simTime, simSpeed, lag) {
 				if (isCasualGame()) {
 					incrementScore(-25);
 				} else {
-					endGame();
+					loseLife(); // miss costs a life; game ends only when lives = 0
 				}
 			}
 			continue;
@@ -328,7 +344,7 @@ function tick(width, height, simTime, simSpeed, lag) {
 						sparkBurst(hitX, hitY, 40, 20); // Big explosion
 						targets.splice(i, 1);
 						returnTarget(target);
-						endGame();
+						loseLife(); // lose 1 life; endGame() only fires when lives reach 0
 						continue targetLoop;
 					}
 
