@@ -28,7 +28,7 @@ const backgrounds = [
 ];
 
 function checkMilestone(score) {
-	let milestone = Math.floor(score / 500);
+	let milestone = Math.floor(score / 100);
 	if (milestone > state.game.lastMilestone && milestone > 0) {
 		state.game.lastMilestone = milestone;
 
@@ -38,7 +38,7 @@ function checkMilestone(score) {
 		if (typeof playSound !== 'undefined') playSound('bgChange');
 
 		if (typeof showMilestoneNotification === 'function') {
-			showMilestoneNotification(`${milestone * 500} Points! New World Unlocked!`);
+			showMilestoneNotification(`${milestone * 100} Points! New World Unlocked!`);
 		}
 	}
 }
