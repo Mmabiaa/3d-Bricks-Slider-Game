@@ -1,50 +1,102 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#2c3f51">
-<link rel="shortcut icon" href="https://i.pinimg.com/1200x/17/49/0d/17490d730812a5fb6436973a3e4907d9.jpg" type="image/x-icon">
-<link rel="stylesheet" href="/assets/css/style.css">
-    <script defer src="/assets/js/GAME/main.js"></script>
-    <title>Brick Slider By Mmabiaa</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#2c3f51">
+	<link rel="shortcut icon" href="https://i.pinimg.com/1200x/17/49/0d/17490d730812a5fb6436973a3e4907d9.jpg"
+		type="image/x-icon">
+	<link rel="stylesheet" href="src/css/style.css">
+	<script defer src="src/js/globalConfig.js"></script>
+	<script defer src="src/js/state.js"></script>
+	<script defer src="src/js/PERF.js"></script>
+	<script defer src="src/js/utils.js"></script>
+	<script defer src="src/js/3dModels.js"></script>
+	<script defer src="src/js/Entity.js"></script>
+	<script defer src="src/js/getTarget.js"></script>
+	<script defer src="src/js/createBurst.js"></script>
+	<script defer src="src/js/sparks.js"></script>
+	<script defer src="src/js/hud.js"></script>
+	<script defer src="src/js/menus.js"></script>
+	<script defer src="src/js/audioManager.js"></script>
+	<script defer src="src/js/actions.js"></script>
+	<title>Brick Slider By Mmabiaa</title>
 </head>
+
 <body>
-<canvas id="c"></canvas>
+	<canvas id="c"></canvas>
 
-<!-- Gameplay HUD -->
-<div class="hud">
-	<div class="hud__score">
-		<div class="score-lbl"></div>
-		<div class="cube-count-lbl"></div>
+	<!-- Gameplay HUD -->
+	<div class="hud">
+		<div class="hud__score">
+			<div class="score-lbl"></div>
+			<div class="cube-count-lbl"></div>
+		</div>
+		<div class="pause-btn">
+			<div></div>
+		</div>
+		<div class="sound-btn" onclick="toggleSound()">
+			<div class="sound-toggle-btn">🔊</div>
+		</div>
+		<div class="slowmo">
+			<div class="slowmo__bar"></div>
+		</div>
 	</div>
-	<div class="pause-btn"><div></div></div>
-	<div class="slowmo">
-		<div class="slowmo__bar"></div>
-	</div>
-</div>
 
-<div class="menus">
-	<div class="menu menu--main">
-		<h1>BRICK-SLIDER</h1>
-		<button type="button" class="play-normal-btn">PLAY GAME</button>
-		<button type="button" class="play-casual-btn">CASUAL MODE</button>
-		<div class="credits">Game by <a href="https://github.com/mmabiaa">Mmabiaa</a></div>
+	<div class="menus">
+		<div class="menu menu--main">
+			<h1>BRICK-SLIDER</h1>
+			<button type="button" class="play-normal-btn">PLAY GAME</button>
+			<button type="button" class="play-casual-btn">CASUAL MODE</button>
+			<button type="button" class="how-it-works-btn">HOW IT WORKS</button>
+			<div class="credits">Game by <a href="https://mmabiaa.vercel.app">Mmabiaa</a></div>
+		</div>
+		<div class="menu menu--pause">
+			<h1>Paused</h1>
+			<button type="button" class="resume-btn">RESUME GAME</button>
+			<button type="button" class="menu-btn--pause">MAIN MENU</button>
+		</div>
+		<div class="menu menu--score">
+			<h1>Game Over</h1>
+			<h2>Your Score:</h2>
+			<div class="final-score-lbl"></div>
+			<div class="high-score-lbl"></div>
+			<button type="button" class="play-again-btn">PLAY AGAIN</button>
+			<button type="button" class="menu-btn--score">MAIN MENU</button>
+		</div>
+		<div class="menu menu--how-it-works">
+			<h1 style="margin-bottom: 0.3em;">How It Works</h1>
+			<div class="how-it-works-content"
+				style="max-width: 600px; text-align: left; margin-bottom: 20px; font-size: 0.85em; line-height: 1.5; padding: 20px; background: rgba(0, 0, 0, 0.75); border-radius: 12px; box-shadow: 0 8px 32px rgba(0, 0, 0, 0.5); border: 1px solid rgba(255,255,255,0.1); color: #fff;">
+				<h2 style="text-align: left; margin: 0 0 8px; font-size: 1.2em; color: #65c8a8;">About the Game</h2>
+				<p style="margin: 0 0 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">3D Bricks Slider Game is a
+					fast-paced game that challenges players' precision, reflexes, and ability to avoid hazards.</p>
+
+				<h2 style="text-align: left; margin: 0 0 8px; font-size: 1.2em; color: #65c8a8;">Game Objective &
+					Controls</h2>
+				<p style="margin: 0 0 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Earn points by swiping regular
+					bricks with your mouse or touchscreen as they appear. Progress through the game by continuously
+					scoring and surviving.</p>
+
+				<h2 class="bomb-warning"
+					style="text-align: left; margin: 0 0 8px; color: #ff6b6b; font-size: 1.2em; text-shadow: 0 0 5px rgba(255, 107, 107, 0.4);">
+					⚠️ Bomb Warning! ⚠️</h2>
+				<p style="margin: 0 0 15px; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Bombs may appear alongside
+					regular
+					bricks during gameplay. <strong>Do not swipe bombs!</strong> Swiping a bomb immediately ends the
+					current game. Stay alert and avoid them.</p>
+
+				<h2 style="text-align: left; margin: 0 0 8px; font-size: 1.2em; color: #65c8a8;">Discover New Worlds
+				</h2>
+				<p style="margin: 0; text-shadow: 1px 1px 2px rgba(0,0,0,0.8);">Every 500 points, the game's background
+					will dynamically evolve into a new, unique environment. See how far you can progress and unlock them
+					all!</p>
+			</div>
+			<button type="button" class="play-normal-btn-from-how" style="margin-bottom: 10px;">START PLAYING</button>
+			<button type="button" class="menu-btn--how-it-works">MAIN MENU</button>
+		</div>
 	</div>
-	<div class="menu menu--pause">
-		<h1>Paused</h1>
-		<button type="button" class="resume-btn">RESUME GAME</button>
-		<button type="button" class="menu-btn--pause">MAIN MENU</button>
-	</div>
-	<div class="menu menu--score">
-		<h1>Game Over</h1>
-		<h2>Your Score:</h2>
-		<div class="final-score-lbl"></div>
-		<div class="high-score-lbl"></div>
-		<button type="button" class="play-again-btn">PLAY AGAIN</button>
-		<button type="button" class="menu-btn--score">MAIN MENU</button>
-	</div>
-</div>
 </body>
-</html>
 
+</html>
