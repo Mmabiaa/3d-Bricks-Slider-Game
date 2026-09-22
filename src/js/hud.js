@@ -21,6 +21,12 @@ function setHudVisibility(visible) {
 const scoreNode = $('.score-lbl');
 const cubeCountNode = $('.cube-count-lbl');
 const levelNode = $('.level-lbl');
+const livesNode = $('.lives-lbl');
+
+function renderLivesHud() {
+	const lives = state.game.lives;
+	livesNode.innerText = '❤️'.repeat(Math.max(0, lives));
+}
 
 function renderLevelHud() {
 	const level = state.game.lastMilestone + 1;
@@ -38,6 +44,7 @@ function renderScoreHud() {
 	}
 	cubeCountNode.innerText = `CUBES SMASHED: ${state.game.cubeCount}`;
 	renderLevelHud();
+	renderLivesHud();
 }
 
 renderScoreHud();

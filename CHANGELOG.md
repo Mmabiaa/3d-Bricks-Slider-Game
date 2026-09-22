@@ -2,6 +2,23 @@
 
 All notable changes to the 3D Bricks Slider Game project will be documented in this file.
 
+## [Unreleased]
+
+### Added
+- **3-Lives System** (from `feature/3-lives.md`):
+  - Players now begin each game with **3 lives** displayed as ❤️❤️❤️ in the HUD.
+  - Both **bomb hits** and **missed bricks** (Ranked mode) each cost one life instead of triggering an instant Game Over.
+  - The HUD lives display updates immediately after each mistake, with a bounce-flash animation to signal damage.
+  - The game only ends when all 3 lives are exhausted, keeping existing explosion sounds and visual effects intact.
+  - Lives reset to 3 automatically when starting or restarting a game.
+  - Casual mode is unaffected — missed bricks still deduct 25 points as before.
+
+### Changed
+- **Ranked Mode Missed Brick**: Missing a brick in Ranked mode no longer causes an instant Game Over — it now costs one life via the 3-lives system.
+- **Bomb Mechanic**: Bomb swipes no longer cause instant Game Over. Swiping a bomb now deducts one life from the player's ❤️ counter. Game Over only triggers when all lives are lost.
+
+---
+
 ## [2.0.0] - 2026-09-22
 
 ### Refactored

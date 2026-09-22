@@ -34,7 +34,9 @@ const state = {
 		// Total number of cubes smashed in game.
 		cubeCount: 0,
 		// Track background changing score milestone
-		lastMilestone: 0
+		lastMilestone: 0,
+		// Player lives (3-lives system)
+		lives: 3
 	},
 	menus: {
 		// Set to `null` to hide all menus
