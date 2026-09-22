@@ -2,7 +2,7 @@
 
 All notable changes to the 3D Bricks Slider Game project will be documented in this file.
 
-## [Unreleased]
+## [2.0.0] - 2026-09-22
 
 ### Refactored
 - **File Modularization**: Refactored the monolithic gameplay architecture into distinct, maintainable modules (`state.js`, `actions.js`, `hud.js`, `globalConfig.js`, etc.). This structural improvement ensures cleaner codebase management and easier integration of new features.
