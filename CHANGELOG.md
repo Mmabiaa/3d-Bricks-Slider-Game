@@ -8,6 +8,12 @@ All notable changes to the 3D Bricks Slider Game project will be documented in t
 - **File Modularization**: Refactored the monolithic gameplay architecture into distinct, maintainable modules (`state.js`, `actions.js`, `hud.js`, `globalConfig.js`, etc.). This structural improvement ensures cleaner codebase management and easier integration of new features.
 
 ### Added
+- **Gameplay Sound Effects System** (from `feature/SOUND.md`):
+  - Created a centralized Audio Manager (`audioManager.js`) to handle logic for game sound effects.
+  - Implemented core sound cues: a confirmation sound on game start, an explosion/game-over sound, and an environment transition sound at 500-point milestones.
+  - Integrated `splash.mp3` audio feedback that fires immediately whenever a regular brick is successfully slashed/smashed.
+  - Added an accessible sound toggle button integrated with `localStorage` to save player preferences for enabling or muting audio across sessions.
+
 - **Bomb Mechanic Feature** (from `feature/BOMB.md`):
   - Introduced hazardous Bomb objects that randomly spawn alongside regular score bricks.
   - Added critical game-over mechanics when a player accidentally swipes a bomb.
