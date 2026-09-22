@@ -10,7 +10,7 @@ All notable changes to the 3D Bricks Slider Game project will be documented in t
 ### Added
 - **Gameplay Sound Effects System** (from `feature/SOUND.md`):
   - Created a centralized Audio Manager (`audioManager.js`) to handle logic for game sound effects.
-  - Implemented core sound cues: a confirmation sound on game start, an explosion/game-over sound, and an environment transition sound at 500-point milestones.
+  - Implemented core sound cues: a confirmation sound on game start, an explosion/game-over sound, and an environment transition sound at 100-point milestones.
   - Integrated `splash.mp3` audio feedback that fires immediately whenever a regular brick is successfully slashed/smashed.
   - Added an accessible sound toggle button integrated with `localStorage` to save player preferences for enabling or muting audio across sessions.
 
@@ -27,9 +27,9 @@ All notable changes to the 3D Bricks Slider Game project will be documented in t
   - Added a "Start Playing" button and intuitive navigation back to the main menu without breaking game flow.
 
 - **Dynamic Backgrounds Feature** (from `feature/DYNAMIC-BACKGROUND.md`):
-  - Engineered a Dynamic Background System that automatically updates the game environment every 500 points.
+  - Engineered a Dynamic Background System that automatically updates the game environment every 100 points.
   - Crafted distinct, high-contrast color themes (Teal, Blue Night, Cosmic Space Purple, Sunset Red, Digital Green, and Deep Violet) fitting the suggested game environments without hindering readability or clashing with gameplay objects.
-  - Added an unobtrusive milestone notification popup (e.g., "500 Points! New World Unlocked!") accompanied by smooth color transitions.
+  - Added an unobtrusive milestone notification popup (e.g., "100 Points! New World Unlocked!") accompanied by smooth color transitions.
   - Handled progress tracking within ranked mode sessions and ensured the background resets gracefully upon game restarts.
 
 ### Fixed
