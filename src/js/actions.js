@@ -40,9 +40,27 @@ function checkMilestone(score) {
 		document.body.style.backgroundColor = backgrounds[bgIndex];
 
 		if (typeof playSound !== 'undefined') playSound('bgChange');
+		if (typeof renderLevelHud === 'function') renderLevelHud();
 
 		if (typeof showMilestoneNotification === 'function') {
-			showMilestoneNotification(`${milestone * 100} Points! New World Unlocked!`);
+			showMilestoneNotification(`⬆ Level ${milestone + 1}`);
+		}
+	}
+}
+
+function checkCasualMilestone(cubeCount) {
+	let milestone = Math.floor(cubeCount / 20);
+	if (milestone > state.game.lastMilestone && milestone > 0) {
+		state.game.lastMilestone = milestone;
+
+		let bgIndex = milestone % backgrounds.length;
+		document.body.style.backgroundColor = backgrounds[bgIndex];
+
+		if (typeof playSound !== 'undefined') playSound('bgChange');
+		if (typeof renderLevelHud === 'function') renderLevelHud();
+
+		if (typeof showMilestoneNotification === 'function') {
+			showMilestoneNotification(`⬆ Level ${milestone + 1}`);
 		}
 	}
 }
@@ -74,6 +92,9 @@ function incrementCubeCount(inc) {
 	if (isInGame()) {
 		state.game.cubeCount += inc;
 		renderScoreHud();
+		if (isCasualGame()) {
+			checkCasualMilestone(state.game.cubeCount);
+		}
 	}
 }
 

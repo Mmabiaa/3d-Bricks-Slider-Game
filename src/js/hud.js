@@ -20,6 +20,12 @@ function setHudVisibility(visible) {
 ///////////
 const scoreNode = $('.score-lbl');
 const cubeCountNode = $('.cube-count-lbl');
+const levelNode = $('.level-lbl');
+
+function renderLevelHud() {
+	const level = state.game.lastMilestone + 1;
+	levelNode.innerText = `LVL ${level}`;
+}
 
 function renderScoreHud() {
 	if (isCasualGame()) {
@@ -31,6 +37,7 @@ function renderScoreHud() {
 		cubeCountNode.style.opacity = 0.65;
 	}
 	cubeCountNode.innerText = `CUBES SMASHED: ${state.game.cubeCount}`;
+	renderLevelHud();
 }
 
 renderScoreHud();
