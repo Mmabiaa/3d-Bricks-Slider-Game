@@ -19,12 +19,16 @@ function setActiveMenu(menu) {
 /////////////////
 
 const backgrounds = [
-	'#65c8a8', // default 0-499
-	'#1a365d', // 500-999 (Blue Night)
-	'#170b3b', // 1000-1499 (Cosmic Space Purple)
-	'#8a2c22', // 1500-1999 (Sunset Red/Orange)
-	'#0f381e', // 2000-2499 (Digital Green)
-	'#4a154b'  // 2500+ (Deep Violet)
+	'#65c8a8', // default
+	'#1a365d', // Blue Night
+	'#170b3b', // Cosmic Space Purple
+	'#8a2c22', // Sunset Red/Orange
+	'#0f381e', // Digital Green
+	'#4a154b', // Deep Violet
+	'#e67e22', // Vibrant Orange
+	'#2c3e50', // Midnight Blue
+	'#8e44ad', // Bright Purple
+	'#c0392b'  // Deep Crimson
 ];
 
 function checkMilestone(score) {
@@ -32,7 +36,7 @@ function checkMilestone(score) {
 	if (milestone > state.game.lastMilestone && milestone > 0) {
 		state.game.lastMilestone = milestone;
 
-		let bgIndex = Math.min(milestone, backgrounds.length - 1);
+		let bgIndex = milestone % backgrounds.length;
 		document.body.style.backgroundColor = backgrounds[bgIndex];
 
 		if (typeof playSound !== 'undefined') playSound('bgChange');
