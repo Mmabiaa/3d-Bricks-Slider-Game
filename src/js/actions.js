@@ -28,7 +28,12 @@ const backgrounds = [
 	'#e67e22', // Vibrant Orange
 	'#2c3e50', // Midnight Blue
 	'#8e44ad', // Bright Purple
-	'#c0392b'  // Deep Crimson
+	'#c0392b', // Deep Crimson
+	'#0c2461', // Dark Sapphire
+	'#3c6382', // Ocean Night
+	'#b71540', // Rich Maroon
+	'#079992', // Deep Teal
+	'#2f3640'  // Charcoal
 ];
 
 function checkLevelProgression() {
@@ -39,7 +44,7 @@ function checkLevelProgression() {
 		state.game.cubesSmashedThisLevel = 0;
 		state.game.lastMilestone++;
 
-		let bgIndex = state.game.lastMilestone % backgrounds.length;
+		let bgIndex = Math.floor(Math.random() * backgrounds.length);
 		document.body.style.backgroundColor = backgrounds[bgIndex];
 
 		if (typeof playSound !== 'undefined') playSound('bgChange');

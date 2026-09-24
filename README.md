@@ -51,8 +51,8 @@ Built entirely with **vanilla HTML5, CSS3, and JavaScript** — no frameworks, n
 - **Dynamic Background Sound:** Plays on every completed level when the background changes.
 - **Sound Toggle Button (🔊/🔇):** Mounted in the HUD. Preference is saved to `localStorage` and persisted across sessions.
 
-### 🌃 Endless Dynamic Backgrounds
-- The game background evolves **every time you complete a level** (by successfully smashing a required sequence of 10, 15, 20, 25, or 30 cubes) through a curated palette of **10 environments**:
+### 🌃 Endless Random Dynamic Backgrounds
+- The game background evolves **every time you complete a level** (by successfully smashing a required sequence of 10, 15, 20, 25, or 30 cubes) randomly picking from a curated palette of **15 environments**:
 
   | # | Colour Name         | Hex       |
   |---|---------------------|-----------|
@@ -66,8 +66,13 @@ Built entirely with **vanilla HTML5, CSS3, and JavaScript** — no frameworks, n
   | 8 | Midnight Blue       | `#2c3e50` |
   | 9 | Bright Purple       | `#8e44ad` |
   |10 | Deep Crimson        | `#c0392b` |
+  |11 | Dark Sapphire       | `#0c2461` |
+  |12 | Ocean Night         | `#3c6382` |
+  |13 | Rich Maroon         | `#b71540` |
+  |14 | Deep Teal           | `#079992` |
+  |15 | Charcoal            | `#2f3640` |
 
-- After the 10th background, the palette **loops infinitely** — backgrounds never stop cycling.
+- The game will always begin in the **Teal (Default)** environment, and all subsequent levels will shift into a dynamically randomized color from the list above.
 - Each transition displays a smooth "New World Unlocked!" milestone notification.
 
 ### 📖 How It Works Guide
@@ -119,8 +124,11 @@ Built entirely with **vanilla HTML5, CSS3, and JavaScript** — no frameworks, n
 │   ├── BOMB.md
 │   ├── DYNAMIC-BACKGROUND.md
 │   ├── HOW IT WORKS.md
+│   ├── 3-Lives.md
+│   ├── CUBE-BASED-LEVEL.md
+│   ├── HOW-IT-WORKS.md
+│   ├── LEVEL.md
 │   └── SOUND.md
-│
 ├── Release/
 │   └── v2.0.0-release-notes.md   # Official v2.0.0 release notes
 │
