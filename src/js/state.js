@@ -33,7 +33,9 @@ const state = {
 		score: 0,
 		// Total number of cubes smashed in game.
 		cubeCount: 0,
-		// Track background changing score milestone
+		// Number of cubes smashed in the current level.
+		cubesSmashedThisLevel: 0,
+		// Track level progress (0 = Level 1).
 		lastMilestone: 0,
 		// Player lives (3-lives system)
 		lives: 3

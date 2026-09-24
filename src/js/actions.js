@@ -31,36 +31,22 @@ const backgrounds = [
 	'#c0392b'  // Deep Crimson
 ];
 
-function checkMilestone(score) {
-	let milestone = Math.floor(score / 100);
-	if (milestone > state.game.lastMilestone && milestone > 0) {
-		state.game.lastMilestone = milestone;
+function checkLevelProgression() {
+	const cycleIndex = state.game.lastMilestone % 5;
+	const cubesRequired = 10 + cycleIndex * 5;
 
-		let bgIndex = milestone % backgrounds.length;
+	if (state.game.cubesSmashedThisLevel >= cubesRequired) {
+		state.game.cubesSmashedThisLevel = 0;
+		state.game.lastMilestone++;
+
+		let bgIndex = state.game.lastMilestone % backgrounds.length;
 		document.body.style.backgroundColor = backgrounds[bgIndex];
 
 		if (typeof playSound !== 'undefined') playSound('bgChange');
 		if (typeof renderLevelHud === 'function') renderLevelHud();
 
 		if (typeof showMilestoneNotification === 'function') {
-			showMilestoneNotification(`⬆ Level ${milestone + 1}`);
-		}
-	}
-}
-
-function checkCasualMilestone(cubeCount) {
-	let milestone = Math.floor(cubeCount / 20);
-	if (milestone > state.game.lastMilestone && milestone > 0) {
-		state.game.lastMilestone = milestone;
-
-		let bgIndex = milestone % backgrounds.length;
-		document.body.style.backgroundColor = backgrounds[bgIndex];
-
-		if (typeof playSound !== 'undefined') playSound('bgChange');
-		if (typeof renderLevelHud === 'function') renderLevelHud();
-
-		if (typeof showMilestoneNotification === 'function') {
-			showMilestoneNotification(`⬆ Level ${milestone + 1}`);
+			showMilestoneNotification(`⬆ Level ${state.game.lastMilestone + 1}`);
 		}
 	}
 }
@@ -77,9 +63,6 @@ function incrementScore(inc) {
 			state.game.score = 0;
 		}
 		renderScoreHud();
-		if (!isCasualGame()) {
-			checkMilestone(state.game.score);
-		}
 	}
 }
 
@@ -91,10 +74,9 @@ function setCubeCount(count) {
 function incrementCubeCount(inc) {
 	if (isInGame()) {
 		state.game.cubeCount += inc;
+		state.game.cubesSmashedThisLevel += inc;
+		checkLevelProgression();
 		renderScoreHud();
-		if (isCasualGame()) {
-			checkCasualMilestone(state.game.cubeCount);
-		}
 	}
 }
 
@@ -109,6 +91,7 @@ function resetGame() {
 	resetAllCooldowns();
 	setScore(0);
 	setCubeCount(0);
+	state.game.cubesSmashedThisLevel = 0;
 	spawnTime = getSpawnDelay();
 
 	state.game.lastMilestone = 0;
