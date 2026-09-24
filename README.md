@@ -25,7 +25,7 @@
 
 ## 🕹️ About the Game
 
-**3D Bricks Slider Game** is a fast-paced, reflex-driven browser game where players swipe bricks off the screen to score points while avoiding deadly bombs. As you progress, the game environment dynamically evolves with vivid new background colours every 100 points, creating an ever-changing and immersive visual journey.
+**3D Bricks Slider Game** is a fast-paced, reflex-driven browser game where players swipe bricks off the screen to score points while avoiding deadly bombs. As you progress, the game environment dynamically evolves with vivid new background colours as you clear levels, creating an ever-changing and immersive visual journey.
 
 Built entirely with **vanilla HTML5, CSS3, and JavaScript** — no frameworks, no dependencies, just pure performance.
 
@@ -48,11 +48,11 @@ Built entirely with **vanilla HTML5, CSS3, and JavaScript** — no frameworks, n
 - **Game Start Sound:** Plays when the player starts or restarts a game.
 - **Splash Sound:** Fires on every successful brick smash — supports simultaneous overlapping playback with no lag.
 - **Game Over Sound:** Plays when the player loses (brick missed or bomb swiped).
-- **Dynamic Background Sound:** Plays on every 100-point milestone when the background changes.
+- **Dynamic Background Sound:** Plays on every completed level when the background changes.
 - **Sound Toggle Button (🔊/🔇):** Mounted in the HUD. Preference is saved to `localStorage` and persisted across sessions.
 
 ### 🌃 Endless Dynamic Backgrounds
-- The game background evolves **every 100 points** through a curated palette of **10 environments**:
+- The game background evolves **every time you complete a level** (by successfully smashing a required sequence of 10, 15, 20, 25, or 30 cubes) through a curated palette of **10 environments**:
 
   | # | Colour Name         | Hex       |
   |---|---------------------|-----------|
@@ -102,7 +102,7 @@ Built entirely with **vanilla HTML5, CSS3, and JavaScript** — no frameworks, n
 │   │   ├── getTarget.js        # Target spawning and object pool logic
 │   │   ├── createBurst.js      # Burst/fragment explosion effect on brick smash
 │   │   ├── sparks.js           # 2D spark particle system
-│   │   ├── hud.js              # HUD rendering: score, cube count, slow-mo bar, milestone notifications
+│   │   ├── hud.js              # HUD rendering: score, cubes left, slow-mo bar, milestone notifications
 │   │   ├── menus.js            # Menu rendering and button click handlers
 │   │   ├── audioManager.js     # Web Audio API sound manager: preloading, playback, mute toggle
 │   │   └── actions.js          # Core game loop, physics tick, milestone & background logic
@@ -180,7 +180,7 @@ Then visit `http://localhost:8000` in your browser. 🌐
 | Miss a brick (Ranked) | ❌ Game Over |
 | Miss a brick (Casual) | -25 points |
 | Smash a **wireframe** brick | ⚡ Slow-Motion activated |
-| Every **100 points** | 🌍 Background changes + sound cue |
+| Complete a **level** | 🌍 Background changes + sound cue |
 | Press **P** | Pause / Resume |
 | Click 🔊 / 🔇 | Toggle sound effects |
 

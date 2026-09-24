@@ -5,6 +5,12 @@ All notable changes to the 3D Bricks Slider Game project will be documented in t
 ## [Unreleased]
 
 ### Added
+- **Cube-Based Level Progression System** (from `feature/CUBE-BASED-LEVEL.MD`):
+  - Replaced the score-based progression system with a target-based progression system.
+  - Level progression follows a repeating mathematical sequence of 10, 15, 20, 25, and 30 cubes smashed.
+  - The HUD now features a real-time "CUBES LEFT: {n}" indicator calculating remaining targets required for the next level.
+  - Ensures robust integration by maintaining independence from game score math, bombs, and lives.
+
 - **3-Lives System** (from `feature/3-lives.md`):
   - Players now begin each game with **3 lives** displayed as ❤️❤️❤️ in the HUD.
   - Both **bomb hits** and **missed bricks** (Ranked mode) each cost one life instead of triggering an instant Game Over.
