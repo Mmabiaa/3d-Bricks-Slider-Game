@@ -42,7 +42,10 @@ function renderScoreHud() {
 		scoreNode.style.display = 'block';
 		cubeCountNode.style.opacity = 0.65;
 	}
-	cubeCountNode.innerText = `CUBES SMASHED: ${state.game.cubeCount}`;
+	const cycleIndex = state.game.lastMilestone % 5;
+	const cubesRequired = 10 + cycleIndex * 5;
+	const cubesLeft = Math.max(0, cubesRequired - state.game.cubesSmashedThisLevel);
+	cubeCountNode.innerText = `CUBES LEFT: ${cubesLeft}`;
 	renderLevelHud();
 	renderLivesHud();
 }
